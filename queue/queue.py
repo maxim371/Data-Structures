@@ -15,32 +15,31 @@ Stretch: What if you could only use instances of your Stack class to implement t
 """
 #FIFO - first In -> first out
 
+from singly_linked_list import *
 
 class Queue:
     def __init__(self):
         self.size = 0
         self.storage = []
 
-    def isEmpty(self):
-        return self.storage == []    
-    
     def __len__(self):
-        return len(self.storage)
+        return sum([1 for i in self.storage])
 
-    def enqueue(self, value):  #0(1) - add to end of queue
+    def enqueue(self, value):
         self.storage.append(value)
 
-    def dequeue(self):         #FIFO - remove starting brginning of queue
-        data = self.storage[0]
-        del self.storage[0]
-        return data
+    def dequeue(self):
+        if len(self.storage) == 0:
+            return None
+        else:
+            return self.storage.pop(0)
 
 
-queue = Queue()
-queue.enqueue(100)
-queue.enqueue(200)
-queue.enqueue(300)
-print(queue.__len__())
-print("Dequeue: ", queue.dequeue())
-print("Dequeue: ", queue.dequeue())
-print(queue.__len__())
+# queue = Queue()
+# queue.enqueue(100)
+# queue.enqueue(200)
+# queue.enqueue(300)
+# print(queue.__len__())
+# print("Dequeue: ", queue.dequeue())
+# print("Dequeue: ", queue.dequeue())
+# print(queue.__len__())

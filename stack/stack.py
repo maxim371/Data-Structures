@@ -13,24 +13,27 @@ return elements in Last In First Out order.
 
 #LIFO - Last In First Out
 
+from singly_linked_list import *
+
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
-
-    def isEmpty(self):
-        return self.storage == []    
+        self.store = []
 
     def __len__(self):
-        return len(self.storage)
+        size = 0
+        for _ in self.store:
+            size += 1
+        return size
 
     def push(self, value):
-        self.storage.append(value)
+        self.store.append(value)
 
     def pop(self):
-        data = self.storage[-1]
-        del self.storage[-1]
-        return data
+        if self.__len__() == 0:
+            return None
+        else:
+            return self.store.pop(-1)
 
 
 stack = Stack()
